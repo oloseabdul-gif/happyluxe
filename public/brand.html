@@ -1,0 +1,415 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>HAPPYLUXE | Luxury Fashion</title>  <meta
+name="description"
+content="HAPPYLUXE — Where tradition meets trend."
+
+> 
+
+  <style>  
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap');  
+  
+    :root {  
+      --magenta: #a80d4a;  
+      --deep-magenta: #75052f;  
+      --pink: #ff69b4;  
+      --light-pink: #ffd6e8;  
+      --white: #ffffff;  
+    }  
+  
+    * {  
+      margin: 0;  
+      padding: 0;  
+      box-sizing: border-box;  
+    }  
+  
+    body {  
+      min-height: 100vh;  
+      display: grid;  
+      place-items: center;  
+      overflow-x: hidden;  
+      background: var(--white);  
+      font-family: 'Cormorant Garamond', Georgia, serif;  
+    }  
+  
+    /* Main logo container */  
+  
+    .logo {  
+      width: min(92%, 700px);  
+      display: flex;  
+      flex-direction: column;  
+      align-items: center;  
+      text-align: center;  
+      padding: 30px 20px;  
+    }  
+  
+    /* Logo icon */  
+  
+    .logo-mark {  
+      width: min(100%, 340px);  
+      margin-bottom: -8px;  
+      animation: iconEntrance 1.5s ease-out both;  
+    }  
+  
+    .logo-mark svg {  
+      display: block;  
+      width: 100%;  
+      height: auto;  
+      overflow: visible;  
+    }  
+  
+    /* Monogram */  
+  
+    .monogram {  
+      font-family: 'Cormorant Garamond', Georgia, serif;  
+      font-size: 205px;  
+      font-weight: 500;  
+      fill: url(#magenta);  
+      stroke: #8f153f;  
+      stroke-width: 0.7px;  
+      paint-order: stroke fill;  
+      transform-box: fill-box;  
+      transform-origin: center;  
+      animation: monogramReveal 1.5s ease-out both;  
+    }  
+  
+    /* Pink flowing thread */  
+  
+    .pink-thread {  
+      fill: none;  
+      stroke: url(#threadPink);  
+      stroke-width: 4;  
+      stroke-linecap: round;  
+      stroke-linejoin: round;  
+  
+      stroke-dasharray: 900;  
+      stroke-dashoffset: 900;  
+  
+      animation:  
+        threadDraw 2.8s ease-in-out 0.4s forwards,  
+        threadGlow 4s ease-in-out 3.2s infinite;  
+    }  
+  
+    /* Pink straight line */  
+  
+    .pink-line {  
+      fill: none;  
+      stroke: url(#threadPink);  
+      stroke-width: 2;  
+      stroke-linecap: round;  
+  
+      stroke-dasharray: 250;  
+      stroke-dashoffset: 250;  
+  
+      animation: lineDraw 1.2s ease-out 2.3s forwards;  
+    }  
+  
+    /* Brand name */  
+  
+    .brand-name {  
+      font-family: 'Cormorant Garamond', Georgia, serif;  
+      font-size: clamp(42px, 8vw, 76px);  
+      font-weight: 500;  
+      letter-spacing: 0.09em;  
+      line-height: 1;  
+      color: var(--magenta);  
+      white-space: nowrap;  
+  
+      opacity: 0;  
+      transform: translateY(18px);  
+  
+      animation: brandReveal 1.4s ease-out 1.8s forwards;  
+    }  
+  
+    /* Pink divider */  
+  
+    .brand-divider {  
+      width: 130px;  
+      height: 1px;  
+      background: var(--pink);  
+      margin: 14px 0 10px;  
+      position: relative;  
+  
+      transform: scaleX(0);  
+      transform-origin: center;  
+  
+      animation: dividerReveal 1s ease-out 2.8s forwards;  
+    }  
+  
+    .brand-divider::after {  
+      content: '';  
+      position: absolute;  
+      width: 7px;  
+      height: 7px;  
+      background: var(--pink);  
+      top: -3px;  
+      left: 50%;  
+      transform: translateX(-50%) rotate(45deg);  
+    }  
+  
+    /* Tagline */  
+  
+    .brand-tagline {  
+      font-family: Arial, sans-serif;  
+      font-size: clamp(9px, 1.8vw, 12px);  
+      font-weight: 400;  
+      letter-spacing: 0.25em;  
+      color: #6b535b;  
+      line-height: 1.8;  
+  
+      opacity: 0;  
+      transform: translateY(10px);  
+  
+      animation: taglineReveal 1.2s ease-out 3.2s forwards;  
+    }  
+  
+    /* Icon entrance */  
+  
+    @keyframes iconEntrance {  
+      0% {  
+        opacity: 0;  
+        transform: translateY(-25px) scale(0.88);  
+      }  
+  
+      60% {  
+        opacity: 1;  
+        transform: translateY(5px) scale(1.02);  
+      }  
+  
+      100% {  
+        opacity: 1;  
+        transform: translateY(0) scale(1);  
+      }  
+    }  
+  
+    /* Monogram reveal */  
+  
+    @keyframes monogramReveal {  
+      0% {  
+        opacity: 0;  
+        filter: blur(8px);  
+      }  
+  
+      100% {  
+        opacity: 1;  
+        filter: blur(0);  
+      }  
+    }  
+  
+    /* Thread drawing animation */  
+  
+    @keyframes threadDraw {  
+      to {  
+        stroke-dashoffset: 0;  
+      }  
+    }  
+  
+    /* Soft pink glow */  
+  
+    @keyframes threadGlow {  
+      0%, 100% {  
+        filter: drop-shadow(  
+          0 0 1px rgba(255, 105, 180, 0.1)  
+        );  
+      }  
+  
+      50% {  
+        filter: drop-shadow(  
+          0 0 5px rgba(255, 105, 180, 0.45)  
+        );  
+      }  
+    }  
+  
+    /* Straight line drawing */  
+  
+    @keyframes lineDraw {  
+      to {  
+        stroke-dashoffset: 0;  
+      }  
+    }  
+  
+    /* Brand name entrance */  
+  
+    @keyframes brandReveal {  
+      to {  
+        opacity: 1;  
+        transform: translateY(0);  
+      }  
+    }  
+  
+    /* Divider entrance */  
+  
+    @keyframes dividerReveal {  
+      to {  
+        transform: scaleX(1);  
+      }  
+    }  
+  
+    /* Tagline entrance */  
+  
+    @keyframes taglineReveal {  
+      to {  
+        opacity: 1;  
+        transform: translateY(0);  
+      }  
+    }  
+  
+    /* Responsive design */  
+  
+    @media (max-width: 480px) {  
+      .logo {  
+        padding: 20px 10px;  
+      }  
+  
+      .logo-mark {  
+        width: 95%;  
+        margin-bottom: -5px;  
+      }  
+  
+      .brand-name {  
+        font-size: 10vw;  
+        letter-spacing: 0.045em;  
+      }  
+  
+      .brand-tagline {  
+        letter-spacing: 0.15em;  
+      }  
+    }  
+  
+    /* Accessibility */  
+  
+    @media (prefers-reduced-motion: reduce) {  
+      *,  
+      *::before,  
+      *::after {  
+        animation-duration: 0.01ms !important;  
+        animation-delay: 0ms !important;  
+        animation-iteration-count: 1 !important;  
+        transition-duration: 0.01ms !important;  
+      }  
+  
+      .pink-thread {  
+        stroke-dashoffset: 0;  
+      }  
+  
+      .pink-line {  
+        stroke-dashoffset: 0;  
+      }  
+  
+      .brand-name,  
+      .brand-tagline {  
+        opacity: 1;  
+        transform: none;  
+      }  
+  
+      .brand-divider {  
+        transform: scaleX(1);  
+      }  
+    }  
+  </style>  </head>  <body>    <main class="logo">  <!-- HAPPYLUXE Monogram -->  
+
+<div class="logo-mark">  
+
+  <svg  
+    viewBox="0 0 420 300"  
+    xmlns="http://www.w3.org/2000/svg"  
+    role="img"  
+    aria-label="HAPPYLUXE HL monogram"  
+  >  
+
+    <defs>  
+
+      <!-- Magenta metallic gradient -->  
+
+      <linearGradient  
+        id="magenta"  
+        x1="0"  
+        y1="0"  
+        x2="1"  
+        y2="1"  
+      >  
+        <stop offset="0%" stop-color="#f55b91"/>  
+        <stop offset="48%" stop-color="#b70b50"/>  
+        <stop offset="100%" stop-color="#75052f"/>  
+      </linearGradient>  
+
+      <!-- Bright glossy pink thread -->  
+
+      <linearGradient  
+        id="threadPink"  
+        x1="0"  
+        y1="0"  
+        x2="1"  
+        y2="1"  
+      >  
+        <stop offset="0%" stop-color="#ffd6e8"/>  
+        <stop offset="35%" stop-color="#ff85bd"/>  
+        <stop offset="70%" stop-color="#ff69b4"/>  
+        <stop offset="100%" stop-color="#ffb6d9"/>  
+      </linearGradient>  
+
+    </defs>  
+
+    <!-- Letter H -->  
+
+    <text  
+      class="monogram"  
+      x="180"  
+      y="202"  
+      text-anchor="middle"  
+    >H</text>  
+
+    <!-- Letter L -->  
+
+    <text  
+      class="monogram"  
+      x="265"  
+      y="202"  
+      text-anchor="middle"  
+    >L</text>  
+
+    <!-- Pink flowing thread -->  
+
+    <path  
+      class="pink-thread"  
+      d="  
+        M77 184  
+        C125 105 190 139 230 158  
+        C279 181 326 145 345 89  
+        C359 49 331 30 305 43  
+        C276 58 261 104 240 151  
+        C211 217 168 247 123 221  
+        C87 201 98 164 133 151  
+      "  
+    />  
+
+    <!-- Pink straight line -->  
+
+    <path  
+      class="pink-line"  
+      d="M120 242 H300"  
+    />  
+
+  </svg>  
+
+</div>  
+
+<!-- Brand Name -->  
+
+<h1 class="brand-name">  
+  HAPPYLUXE  
+</h1>  
+
+<!-- Pink Divider -->  
+
+<div class="brand-divider"></div>  
+
+<!-- Brand Tagline -->  
+
+<p class="brand-tagline">  
+  WHERE TRADITION MEETS TREND  
+</p>
+
+  </main>  </body>  
+</html>  
